@@ -1,0 +1,94 @@
+// https://davidwalsh.name/write-media-queries-sass
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin tablet {
+  @media (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fbfffe;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 20% 60% auto;
+  grid-template-rows: min-content auto;
+
+  @include tablet {
+    grid-template-columns: 20% 80%;
+  }
+
+  .item-image {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+
+    @include tablet {
+      grid-column: 1;
+    }
+  }
+
+  .item-title {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .item-actions {
+    grid-column: 2;
+    grid-row: 2;
+
+    @include tablet {
+      grid-column: 1 / span 2;
+      grid-row: 3;
+    }
+  }
+
+  .item-pricing {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+
+    @include tablet {
+      grid-column: 2;
+      grid-row: 2;
+    }
+  }
+}
+
+.box {
+  border: 0.2rem solid #172121;
+  margin: 0.2rem;
+  padding: 1rem;
+  color: #fbf7f4;
+
+
+  &.box--small {
+    height: 50px;
+    background-color: #fe654f;
+  }
+
+  &.box--small-alt {
+    height: 50px;
+    background-color: #6b0f1a;
+  }
+
+  &.box--medium {
+    height: 100px;
+    background-color: #58641d;
+  }
+
+  &.box--medium-alt {
+    height: 150px;
+    background-color: #4ea699;
+  }
+
+  &.box--large {
+    height: 100%;
+    max-height: 14rem;
+    background-color: #b9ffb7;
+    color: #333333;
+  }
+}
